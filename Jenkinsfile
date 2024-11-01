@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('docker build') {
             steps {
-                echo 'Hello from multi-branch'
+                echo 'Hello from multiple-branch'
                 sh 'docker build -t ${REGISTRY_CRED_USR}/${REPO_NAME}:${BUILD_NUMBER} .'
             }
         }
