@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2024-11-03T15:11:38Z"
+  labels:
+    run: pravin
+  name: pravin
+  namespace: default
+  resourceVersion: "56306"
+  uid: d6595596-623e-45a6-8f9a-384eb272ae6c
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: pravin
