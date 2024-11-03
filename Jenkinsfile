@@ -29,7 +29,7 @@ pipeline {
          stage('kubernetes creation') {
             steps {
                 echo 'logging in to the K8 cluster'
-                sh 'kubectl get pods'
+                sh 'sudo kubectl get pods'
             }
         }       
     }
