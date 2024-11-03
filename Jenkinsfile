@@ -33,8 +33,10 @@ pipeline {
         stage('kubectl apply') {
         //apply kubectl
           steps {
+			 withCredentials([file(credentialsId: 'k8', variable: 'secretFile')]) {
             sh 'kubectl apply -f pod.yaml --kubeconfig=./config'
            }
-      }
+        }
+	  }
     }
 }
