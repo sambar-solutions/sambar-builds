@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - image: nginx
-    name: pravin
+    name: pravinn
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
