@@ -29,7 +29,11 @@ pipeline {
          stage('kubernetes creation') {
             steps {
                 echo 'logging in to the K8 cluster'
+<<<<<<< HEAD
                 sh 'sudo kubectl get pods'
+=======
+                sh 'kubectl apply -f pod.yaml'
+>>>>>>> parent of 0537d8e (k8)
             }
         }       
     }
