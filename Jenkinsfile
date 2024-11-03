@@ -25,12 +25,14 @@ pipeline {
                 sh 'docker push ${REGISTRY_CRED_USR}/${REPO_NAME}:${BUILD_NUMBER}'
             }
         }
-        
+
          stage('kubernetes creation') {
             steps {
                 echo 'logging in to the K8 cluster'
-                sh 'sudo kubectl apply -f pod.yaml'
+                withCredentials([file(credentialsId: 'k8', variable: 'secretFile')]) {
+                sh 'sudo kubectl apply -f pod.yaml --kubeconfig=$secretFile '
+                }
             }
-        }       
+        }
     }
 }
