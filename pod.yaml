@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pravin
+  name: pravin
+spec:
+  containers:
+  - image: REGISTRY_CRED_USR/REPO_NAME:BUILD_NUMBER
+    name: pravin
+  restartPolicy: Always
