@@ -9,7 +9,7 @@ pipeline {
       REPO_NAME = repoName()
       REGISTRY_CRED = credentials('registry-cred')
     }
-      
+
     stages {
         stage('docker build') {
             steps {
@@ -26,6 +26,13 @@ pipeline {
             }
         }
 
+         stage('kubernetes creation') {
+            steps {
+                echo 'logging in to the K8 cluster'
+                withCredentials([file(credentialsId: 'k8', variable: 'secretFile')]) {
+                sh  ' kubectl apply -f pod.yaml --kubeconfig=$secretFile '
+                }
+            }
+        }
     }
 }
-

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pravin
+  name: pravin
+spec:
+  containers:
+  - image: ${REGISTRY_CRED_USR}/${REPO_NAME}:${BUILD_NUMBER}'
+    name: pravin
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
