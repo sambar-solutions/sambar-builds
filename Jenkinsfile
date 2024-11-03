@@ -34,7 +34,7 @@ pipeline {
         //apply kubectl
           steps {
 			 withCredentials([file(credentialsId: 'k8', variable: 'secretFile')]) {
-            sh 'kubectl apply -f pod.yaml --kubeconfig=./config'
+            sh 'kubectl apply -f pod.yaml --kubeconfig=$secretFile'
            }
         }
 	  }
