@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo 'logging in to the K8 cluster'
                 withCredentials([file(credentialsId: 'k8', variable: 'secretFile')]) {
-                sh 'sudo kubectl apply -f pod.yaml --kubeconfig=$secretFile '
+                sh  ' kubectl apply -f pod.yaml --kubeconfig=$secretFile '
                 }
             }
         }
