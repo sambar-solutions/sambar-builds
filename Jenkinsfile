@@ -25,7 +25,19 @@ pipeline {
                 sh 'docker push ${REGISTRY_CRED_USR}/${REPO_NAME}:${BUILD_NUMBER}'
             }
         }
-
+        stage('find and replace') {
+          steps {
+            sh 'sed -i "s/REGISTRY_CRED_USR/$REGISTRY_CRED_USR/g" pod.yaml'
+            sh 'sed -i "s/REPO_NAME/$REPO_NAME/g" pod.yaml'
+            sh 'sed -i "s/BUILD_NUMBER/$BUILD_NUMBER/g" pod.yaml'
+            sh 'cat pod.yaml'
+          }
+        }
+        stage('kubectl apply') {
+        //apply kubectl
+          steps {
+            sh 'kubectl apply -f pod.yaml --kubeconfig=./config'
+           }
+      }
     }
 }
-
